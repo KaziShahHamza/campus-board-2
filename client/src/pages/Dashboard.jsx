@@ -26,6 +26,7 @@ function Dashboard() {
 
         const data = await res.json();
         setUser(data);
+      // eslint-disable-next-line no-unused-vars
       } catch (error) {
         localStorage.removeItem("token");
         navigate("/login");

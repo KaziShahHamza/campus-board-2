@@ -1,15 +1,15 @@
 // src/App.jsx
 import { Outlet, Link } from "react-router";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <div>
-      <nav style={{ marginBottom: "1rem" }}>
-        <Link to="/login">Login</Link> | <Link to="/signup">Signup</Link>
-      </nav>
+      <Navbar />
       <Outlet />
     </div>
   );
 };
+
 
 export default App;
