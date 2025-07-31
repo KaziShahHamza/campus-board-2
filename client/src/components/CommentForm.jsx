@@ -32,16 +32,19 @@ function CommentForm({ postId, onAddComment }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <form onSubmit={handleSubmit} className="mt-2 space-y-2">
+      {error && <p className="text-red-500 text-sm">{error}</p>}
       <input
         type="text"
         placeholder="Write a comment..."
         value={commentText}
         onChange={(e) => setCommentText(e.target.value)}
-        style={{ width: "100%", marginTop: "0.5rem" }}
+        className="w-full p-2 border border-sky-300 rounded focus:outline-none focus:ring-2 focus:ring-sky-500 font-nunito"
       />
-      <button type="submit" style={{ padding: "0.3rem 1rem" }}>
+      <button
+        type="submit"
+        className="bg-purple-500 hover:bg-purple-600 text-white px-3 py-1 rounded font-poppins transition"
+      >
         Post Comment
       </button>
     </form>

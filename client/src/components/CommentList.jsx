@@ -2,15 +2,20 @@
 
 function CommentList({ comments }) {
   return (
-    <div style={{ marginTop: "1rem" }}>
-      <h4>Comments</h4>
+    <div className="mt-4">
+      <h4 className="text-lg font-bold text-yellow-600 font-poppins">
+        Comments
+      </h4>
       {comments.length === 0 ? (
-        <p>No comments yet.</p>
+        <p className="text-gray-500">No comments yet.</p>
       ) : (
         comments.map((c) => (
-          <div key={c._id} style={{ fontSize: "0.9rem", marginBottom: "0.5rem" }}>
+          <div
+            key={c._id}
+            className="mb-2 p-2 bg-white border-l-4 border-sky-400 rounded font-nunito text-sm"
+          >
             <p>{c.content}</p>
-            <small>{c.createdAt}</small>
+            <small className="text-gray-500">{c.createdAt}</small>
           </div>
         ))
       )}

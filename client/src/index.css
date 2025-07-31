@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+  --font-poppins: Poppins, sans-serif;
+  --font-nunito: Nunito, sans-serif;
+
+  --color-purple: #7e57c2;
+  --color-sky: #00bcd4;
+  --color-yellow: #ffeb3b;
+}

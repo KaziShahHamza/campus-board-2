@@ -5,40 +5,36 @@ import CommentList from "./CommentList";
 function PostList({ posts, onAddComment, onVote, onToggleSolved }) {
   return (
     <div>
-      <h2>All Posts</h2>
-      {posts.length === 0 && <p>No posts yet.</p>}
+      <h2 className="text-2xl font-bold text-purple-600 mb-4 font-poppins">
+        All Posts
+      </h2>
+      {posts.length === 0 && <p className="text-gray-500">No posts yet.</p>}
       {posts.map((post) => (
         <div
           key={post._id}
-          style={{
-            border: "1px solid #ccc",
-            marginBottom: "1rem",
-            padding: "1rem",
-            width: "300px",
-            backgroundColor: post.isSolved ? "#e0ffe0" : "#fff"
-          }}
+          className={`border rounded-lg p-4 mb-4 w-[300px] shadow-md font-nunito ${
+            post.isSolved ? "bg-green-100 border-green-400" : "bg-white"
+          }`}
         >
-          <h3>
+          <h3 className="text-lg font-semibold text-purple-700">
             {post.title}{" "}
             {post.isSolved && (
-              <span style={{ color: "green", fontSize: "0.8rem" }}>
-                [Solved]
-              </span>
+              <span className="text-green-600 text-sm ml-2">[Solved]</span>
             )}
           </h3>
-          <p>{post.description}</p>
-          <small>Posted at: {post.createdAt}</small>
+          <p className="text-gray-700">{post.description}</p>
+          <small className="text-gray-500 block mt-1">
+            Posted at: {post.createdAt}
+          </small>
 
-          <div style={{ marginTop: "0.5rem" }}>
+          <div className="flex items-center mt-2 space-x-2">
             <button onClick={() => onVote(post._id, "up")}>👍</button>
-            <span style={{ margin: "0 0.5rem" }}>{post.upvotes || 0}</span>
-
+            <span>{post.upvotes || 0}</span>
             <button onClick={() => onVote(post._id, "down")}>👎</button>
-            <span style={{ margin: "0 0.5rem" }}>{post.downvotes || 0}</span>
-
+            <span>{post.downvotes || 0}</span>
             <button
               onClick={() => onToggleSolved(post._id)}
-              style={{ marginLeft: "1rem" }}
+              className="ml-auto text-sm text-sky-500 hover:underline"
             >
               {post.isSolved ? "Mark Unsolved" : "Mark Solved"}
             </button>

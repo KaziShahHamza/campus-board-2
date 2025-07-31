@@ -26,7 +26,7 @@ function Dashboard() {
 
         const data = await res.json();
         setUser(data);
-      // eslint-disable-next-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
       } catch (error) {
         localStorage.removeItem("token");
         navigate("/login");
@@ -39,10 +39,14 @@ function Dashboard() {
   if (!user) return <p>Loading...</p>;
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <h2>Dashboard</h2>
-      <p><strong>Name:</strong> {user.username}</p>
-      <p><strong>Email:</strong> {user.email}</p>
+    <div className="p-6 font-nunito">
+      <h2 className="text-2xl font-bold text-[#7e57c2] mb-4">Dashboard</h2>
+      <p>
+        <strong>Name:</strong> {user.username}
+      </p>
+      <p>
+        <strong>Email:</strong> {user.email}
+      </p>
     </div>
   );
 }

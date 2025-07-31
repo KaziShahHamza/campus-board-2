@@ -36,8 +36,8 @@ function PostForm({ onAddPost }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "1rem" }}>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <form onSubmit={handleSubmit} className="mb-4 space-y-2 w-[300px]">
+      {error && <p className="text-red-500 text-sm">{error}</p>}
 
       <input
         type="text"
@@ -45,17 +45,23 @@ function PostForm({ onAddPost }) {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         required
-        style={{ display: "block", marginBottom: "0.5rem", width: "300px" }}
+        className="block w-full p-2 border border-purple-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-500 font-poppins"
       />
       <textarea
         placeholder="Post description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         required
-        style={{ display: "block", marginBottom: "0.5rem", width: "300px" }}
+        className="block w-full p-2 border border-sky-300 rounded focus:outline-none focus:ring-2 focus:ring-sky-500 font-poppins"
       />
-      <button type="submit">Submit</button>
+      <button
+        type="submit"
+        className="px-4 py-2 bg-yellow-300 hover:bg-yellow-400 text-black rounded font-bold font-nunito transition"
+      >
+        Submit
+      </button>
     </form>
+
   );
 }
 

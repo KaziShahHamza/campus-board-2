@@ -56,8 +56,10 @@ function Home() {
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Campus Problem Board</h1>
+    <div className="p-6 font-poppins bg-[#f9f9ff] min-h-screen">
+      <h1 className="text-3xl font-bold text-[#00bcd4] mb-6">
+        Campus Problem Board
+      </h1>
       <PostForm onAddPost={addPost} />
       <PostList
         posts={posts}

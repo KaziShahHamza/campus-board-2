@@ -26,8 +26,8 @@ function Login() {
       if (!res.ok) return setError(data.error || "Login failed");
 
       localStorage.setItem("token", data.token);
-      alert("Login successful");
       navigate("/dashboard");
+      alert("Login successful");
     } catch (err) {
       console.error(err);
       setError("Something went wrong");
@@ -35,16 +35,40 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
-      <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
-      <button type="submit">Login</button>
-      <p>
-        Don't have an account? <a href="/signup">Sign up</a>
+    <div className="max-w-md mx-auto mt-12 bg-white shadow-md rounded-xl p-8 font-nunito">
+      <h2 className="text-2xl font-bold text-purple mb-6 text-center">Login</h2>
+      {error && <p className="text-red-500 mb-4">{error}</p>}
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-purple"
+        />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-purple"
+        />
+        <button
+          type="submit"
+          className="w-full bg-sky text-white py-2 rounded-md font-semibold hover:bg-purple transition"
+        >
+          Login
+        </button>
+      </form>
+      <p className="mt-4 text-center text-sm text-gray-600">
+        Don&apos;t have an account?{" "}
+        <a href="/signup" className="text-purple hover:underline font-medium">
+          Sign up
+        </a>
       </p>
-    </form>
+    </div>
   );
 }
 
