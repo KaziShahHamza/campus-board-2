@@ -41,6 +41,9 @@ function CommentForm({ postId, onAddComment }) {
         onChange={(e) => setCommentText(e.target.value)}
         style={{ width: "100%", marginTop: "0.5rem" }}
       />
+      <button type="submit" style={{ padding: "0.3rem 1rem" }}>
+        Post Comment
+      </button>
     </form>
   );
 }

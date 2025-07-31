@@ -1,16 +1,15 @@
-// src/App.js
-import React from "react";
-import Home from "./pages/Home";
+// src/App.jsx
+import { Outlet, Link } from "react-router";
 
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
-
-function App() {
-  // console.log(API_KEY);
+const App = () => {
   return (
     <div>
-      <Home />
+      <nav style={{ marginBottom: "1rem" }}>
+        <Link to="/login">Login</Link> | <Link to="/signup">Signup</Link>
+      </nav>
+      <Outlet />
     </div>
   );
-}
+};
 
 export default App;

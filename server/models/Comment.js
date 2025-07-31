@@ -2,8 +2,10 @@
 import mongoose from "mongoose";
 
 const CommentSchema = new mongoose.Schema({
-  content: String,
+  content: { type: String, required: true },
   post: { type: mongoose.Schema.Types.ObjectId, ref: "Post" },
+  upvotes: { type: Number, default: 0 },
+  downvotes: { type: Number, default: 0 },
   createdAt: { type: Date, default: Date.now },
 });
 

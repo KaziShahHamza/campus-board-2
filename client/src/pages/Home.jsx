@@ -6,7 +6,7 @@ import PostList from "../components/PostList";
 function Home() {
   const [posts, setPosts] = useState([]);
 
-    useEffect(() => {
+  useEffect(() => {
     const fetchPosts = async () => {
       try {
         const res = await fetch("http://localhost:5000/api/posts");
@@ -35,7 +35,7 @@ function Home() {
 
   const handleVote = (postId, type) => {
     const updatedPosts = posts.map((post) => {
-      if (post.id === postId) {
+      if (post._id === postId) {
         return {
           ...post,
           upvotes: type === "up" ? (post.upvotes || 0) + 1 : post.upvotes || 0,
@@ -50,7 +50,7 @@ function Home() {
 
   const toggleSolved = (postId) => {
     const updatedPosts = posts.map((post) =>
-      post.id === postId ? { ...post, isSolved: !post.isSolved } : post
+      post._id === postId ? { ...post, isSolved: !post.isSolved } : post
     );
     setPosts(updatedPosts);
   };

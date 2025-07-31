@@ -30,14 +30,14 @@ function PostList({ posts, onAddComment, onVote, onToggleSolved }) {
           <small>Posted at: {post.createdAt}</small>
 
           <div style={{ marginTop: "0.5rem" }}>
-            <button onClick={() => onVote(post.id, "up")}>👍</button>
+            <button onClick={() => onVote(post._id, "up")}>👍</button>
             <span style={{ margin: "0 0.5rem" }}>{post.upvotes || 0}</span>
 
-            <button onClick={() => onVote(post.id, "down")}>👎</button>
+            <button onClick={() => onVote(post._id, "down")}>👎</button>
             <span style={{ margin: "0 0.5rem" }}>{post.downvotes || 0}</span>
 
             <button
-              onClick={() => onToggleSolved(post.id)}
+              onClick={() => onToggleSolved(post._id)}
               style={{ marginLeft: "1rem" }}
             >
               {post.isSolved ? "Mark Unsolved" : "Mark Solved"}
