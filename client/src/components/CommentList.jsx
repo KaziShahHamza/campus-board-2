@@ -1,5 +1,4 @@
 // src/components/CommentList.js
-import React from "react";
 
 function CommentList({ comments }) {
   return (
@@ -9,7 +8,7 @@ function CommentList({ comments }) {
         <p>No comments yet.</p>
       ) : (
         comments.map((c) => (
-          <div key={c.id} style={{ fontSize: "0.9rem", marginBottom: "0.5rem" }}>
+          <div key={c._id} style={{ fontSize: "0.9rem", marginBottom: "0.5rem" }}>
             <p>{c.content}</p>
             <small>{c.createdAt}</small>
           </div>

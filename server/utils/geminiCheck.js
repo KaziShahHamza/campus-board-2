@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // console.log(process.env.MY_SECRET);
-// console.log(process.env.GEMINI_API_KEY);
+console.log(process.env.GEMINI_API_KEY);
 
 if (process.env.GEMINI_API_KEY) {
   console.log(

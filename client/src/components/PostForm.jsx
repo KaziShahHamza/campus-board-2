@@ -1,6 +1,5 @@
 // src/components/PostForm.js
-import React, { useState } from "react";
-import { checkForSlang } from "../lib/gemini";
+import { useState } from "react";
 
 function PostForm({ onAddPost }) {
   const [title, setTitle] = useState("");
@@ -11,24 +10,29 @@ function PostForm({ onAddPost }) {
     e.preventDefault();
     setError("");
 
-    const fullText = `${title} ${description}`;
-    const check = await checkForSlang(fullText);
+    try {
+      const res = await fetch("http://localhost:5000/api/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title, description }),
+      });
 
-    if (check === "BLOCKED") {
-      setError("Post contains inappropriate language. Please revise.");
-      return;
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Something went wrong");
+        return;
+      }
+
+      onAddPost(data);
+      setTitle("");
+      setDescription("");
+    } catch (err) {
+      setError("Failed to submit post");
+      console.error(err);
     }
-
-    const newPost = {
-      id: Date.now(),
-      title,
-      description,
-      createdAt: new Date().toLocaleString(),
-    };
-
-    onAddPost(newPost);
-    setTitle("");
-    setDescription("");
   };
 
   return (

@@ -1,5 +1,4 @@
 // src/components/PostList.js
-import React from "react";
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
 
@@ -10,7 +9,7 @@ function PostList({ posts, onAddComment, onVote, onToggleSolved }) {
       {posts.length === 0 && <p>No posts yet.</p>}
       {posts.map((post) => (
         <div
-          key={post.id}
+          key={post._id}
           style={{
             border: "1px solid #ccc",
             marginBottom: "1rem",
@@ -46,7 +45,7 @@ function PostList({ posts, onAddComment, onVote, onToggleSolved }) {
           </div>
 
           <CommentList comments={post.comments || []} />
-          <CommentForm postId={post.id} onAddComment={onAddComment} />
+          <CommentForm postId={post._id} onAddComment={onAddComment} />
         </div>
       ))}
     </div>

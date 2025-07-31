@@ -1,6 +1,5 @@
 // src/components/CommentForm.js
 import React, { useState } from "react";
-import { checkForSlang } from "../lib/gemini";
 
 function CommentForm({ postId, onAddComment }) {
   const [commentText, setCommentText] = useState("");
@@ -10,20 +9,26 @@ function CommentForm({ postId, onAddComment }) {
     e.preventDefault();
     setError("");
 
-    const check = await checkForSlang(commentText);
-    if (check === "BLOCKED") {
-      setError("Comment contains inappropriate language.");
-      return;
+    try {
+      const res = await fetch("http://localhost:5000/api/comments/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ postId, content: commentText }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Failed to add comment");
+        return;
+      }
+
+      onAddComment(postId, data);
+      setCommentText("");
+    } catch (err) {
+      setError("Something went wrong");
+      console.error(err);
     }
-
-    const newComment = {
-      id: Date.now(),
-      content: commentText,
-      createdAt: new Date().toLocaleString(),
-    };
-
-    onAddComment(postId, newComment);
-    setCommentText("");
   };
 
   return (

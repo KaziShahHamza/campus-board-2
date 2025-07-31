@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import PostForm from "../components/PostForm";
 import PostList from "../components/PostList";
-import CommentForm from "../components/CommentForm";
-import CommentList from "../components/CommentList";
 
 // src/pages/Home.js
 function Home() {
   const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/api/posts");
+        const data = await res.json();
+        setPosts(data);
+      } catch (err) {
+        console.error("❌ Error fetching posts:", err.message);
+      }
+    };
+
+    fetchPosts();
+  }, []);
 
   const addPost = (newPost) => {
     setPosts([newPost, ...posts]);
@@ -14,7 +26,7 @@ function Home() {
 
   const addComment = (postId, newComment) => {
     const updatedPosts = posts.map((post) =>
-      post.id === postId
+      post._id === postId
         ? { ...post, comments: [...(post.comments || []), newComment] }
         : post
     );
@@ -27,7 +39,8 @@ function Home() {
         return {
           ...post,
           upvotes: type === "up" ? (post.upvotes || 0) + 1 : post.upvotes || 0,
-          downvotes: type === "down" ? (post.downvotes || 0) + 1 : post.downvotes || 0,
+          downvotes:
+            type === "down" ? (post.downvotes || 0) + 1 : post.downvotes || 0,
         };
       }
       return post;
