@@ -1,36 +1,26 @@
 // src/pages/Login.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import useAuth from "../context/useAuth";
 
 function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      const data = await res.json();
-      if (!res.ok) return setError(data.error || "Login failed");
-
-      localStorage.setItem("token", data.token);
+      await login(form);
       navigate("/dashboard");
-      alert("Login successful");
     } catch (err) {
-      console.error(err);
-      setError("Something went wrong");
+      setError(err.message);
     }
   };
 

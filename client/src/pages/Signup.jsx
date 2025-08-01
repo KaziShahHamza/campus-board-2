@@ -1,6 +1,7 @@
 // src/pages/Signup.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import useAuth from "../context/AuthContext";
 
 function Signup() {
   const [form, setForm] = useState({
@@ -10,30 +11,20 @@ function Signup() {
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { signup } = useAuth();
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      const data = await res.json();
-      if (!res.ok) return setError(data.error || "Signup failed");
-
-      alert("Signup successful.");
+      await signup(form);
       navigate("/dashboard");
     } catch (err) {
-      console.error(err);
-      setError("Something went wrong");
+      setError(err.message);
     }
   };
 

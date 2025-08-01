@@ -1,3 +1,4 @@
+// controllers/postController.js
 import Post from "../models/Post.js";
 import { checkForSlang } from "../utils/geminiCheck.js";
 

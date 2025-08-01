@@ -10,6 +10,7 @@ import Chats from "./pages/Chats";
 import ComplainBoard from "./pages/ComplainBoard";
 import RequestBoard from "./pages/RequestBoard";
 import EventsBoard from "./pages/EventsBoard";
+import PostProblem from "./pages/PostProblem";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
+      { path: "post", element: <PostProblem /> },
       {
         path: "dashboard",
         element: (

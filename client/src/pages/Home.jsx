@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import PostForm from "../components/PostForm";
 import PostList from "../components/PostList";
 
 // src/pages/Home.js
@@ -20,9 +19,9 @@ function Home() {
     fetchPosts();
   }, []);
 
-  const addPost = (newPost) => {
-    setPosts([newPost, ...posts]);
-  };
+  // const addPost = (newPost) => {
+  //   setPosts([newPost, ...posts]);
+  // };
 
   const addComment = (postId, newComment) => {
     const updatedPosts = posts.map((post) =>
@@ -60,7 +59,6 @@ function Home() {
       <h1 className="text-3xl font-bold text-[#00bcd4] mb-6">
         Campus Problem Board
       </h1>
-      <PostForm onAddPost={addPost} />
       <PostList
         posts={posts}
         onAddComment={addComment}

@@ -1,3 +1,4 @@
+// controllers/commentController.js
 import Comment from "../models/Comment.js";
 import Post from "../models/Post.js";
 import { checkForSlang } from "../utils/geminiCheck.js";

@@ -1,8 +1,11 @@
-// src/components/PostList.js
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
+import useAuth from "../context/useAuth";
+import { Link } from "react-router";
 
 function PostList({ posts, onAddComment, onVote, onToggleSolved }) {
+  const { user } = useAuth(); // ✅ Check login
+
   return (
     <div>
       <h2 className="text-2xl font-bold text-purple-600 mb-4 font-poppins">
@@ -28,20 +31,47 @@ function PostList({ posts, onAddComment, onVote, onToggleSolved }) {
           </small>
 
           <div className="flex items-center mt-2 space-x-2">
-            <button onClick={() => onVote(post._id, "up")}>👍</button>
-            <span>{post.upvotes || 0}</span>
-            <button onClick={() => onVote(post._id, "down")}>👎</button>
-            <span>{post.downvotes || 0}</span>
             <button
-              onClick={() => onToggleSolved(post._id)}
-              className="ml-auto text-sm text-sky-500 hover:underline"
+              onClick={() => user && onVote(post._id, "up")}
+              disabled={!user}
+              className={!user ? "opacity-50 cursor-not-allowed" : ""}
+              title={!user ? "Login to vote" : ""}
+            >
+              👍
+            </button>
+            <span>{post.upvotes || 0}</span>
+
+            <button
+              onClick={() => user && onVote(post._id, "down")}
+              disabled={!user}
+              className={!user ? "opacity-50 cursor-not-allowed" : ""}
+              title={!user ? "Login to vote" : ""}
+            >
+              👎
+            </button>
+            <span>{post.downvotes || 0}</span>
+
+            <button
+              onClick={() => user && onToggleSolved(post._id)}
+              disabled={!user}
+              className={`ml-auto text-sm text-sky-500 hover:underline ${
+                !user ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              title={!user ? "Login to toggle" : ""}
             >
               {post.isSolved ? "Mark Unsolved" : "Mark Solved"}
             </button>
           </div>
 
           <CommentList comments={post.comments || []} />
-          <CommentForm postId={post._id} onAddComment={onAddComment} />
+          {user ? (
+            <CommentForm postId={post._id} onAddComment={onAddComment} />
+          ) : (
+            <p className="text-sm text-gray-500 mt-2">
+              <Link to="/login" className="text-sky-500">Login </Link>
+              to comment.
+            </p>
+          )}
         </div>
       ))}
     </div>
