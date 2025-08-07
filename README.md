@@ -21,7 +21,6 @@ CampusBoard is a full-stack web application where university students can anonym
 - **React** – Component-based frontend UI
 - **React Router v6.4+** – Routing with loader/action pattern
 - **Tailwind CSS** – Fast and responsive styling
-- **Axios** – API requests
 - **Context API** – Global state management (authentication, user info)
 
 ### Backend
