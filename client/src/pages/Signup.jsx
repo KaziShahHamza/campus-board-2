@@ -1,7 +1,7 @@
 // src/pages/Signup.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import useAuth from "../context/AuthContext";
+import useAuth from "../context/useAuth";
 
 function Signup() {
   const [form, setForm] = useState({
