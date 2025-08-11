@@ -134,7 +134,6 @@ Gemini API is used to detect slang or toxic language in both posts and comments.
 
 ## 💡 Future Improvements
 
-* Admin dashboard to manage reported posts
 * Notification system for post interactions
 * File/image uploads in posts
 * Email verification during sign-up
