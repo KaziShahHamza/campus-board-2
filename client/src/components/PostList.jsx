@@ -8,7 +8,7 @@ function PostList({ posts, onAddComment, onVote, onToggleSolved }) {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-purple-600 mb-4 font-poppins">
+      <h2 className="text-2xl font-bold mb-4 font-poppins">
         All Posts
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -20,7 +20,7 @@ function PostList({ posts, onAddComment, onVote, onToggleSolved }) {
               post.isSolved ? "bg-green-100 border-green-400" : "bg-white"
             }`}
           >
-            <h3 className="text-lg font-semibold text-purple-700">
+            <h3 className="text-lg font-semibold ">
               {post.title}{" "}
               {post.isSolved && (
                 <span className="text-green-600 text-sm ml-2">[Solved]</span>

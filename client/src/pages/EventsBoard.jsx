@@ -15,17 +15,16 @@ const EventsBoard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white px-4 py-8 flex flex-col items-center">
-      <h1 className="text-4xl font-bold text-[#7e57c2] mb-4 font-poppins">
+    <div className="min-h-screen bg-app px-4 py-8 flex flex-col items-center">
+      <h1 className="text-4xl font-bold text-primary mb-4 font-poppins">
         Events Board
       </h1>
-      <p className="text-[#00bcd4] text-center max-w-md mb-6 font-nunito">
+      <p className="text-accent text-center max-w-md mb-6 font-nunito">
         Announce or share upcoming campus events with students.
       </p>
-
       <form
         onSubmit={handleSubmit}
-        className="bg-purple-50 border border-[#7e57c2] p-6 rounded-xl shadow-lg w-full max-w-md space-y-4"
+        className="surface border-muted p-6 rounded-xl card w-full max-w-md space-y-4"
       >
         <input
           type="text"
@@ -33,7 +32,7 @@ const EventsBoard = () => {
           value={eventName}
           onChange={(e) => setEventName(e.target.value)}
           required
-          className="w-full p-3 border border-purple-300 rounded focus:ring-2 focus:ring-purple-500"
+          className="w-full p-3 border border-muted rounded focus:ring-2 focus:outline-none"
         />
 
         <input
@@ -41,7 +40,7 @@ const EventsBoard = () => {
           value={date}
           onChange={(e) => setDate(e.target.value)}
           required
-          className="w-full p-3 border border-purple-300 rounded focus:ring-2 focus:ring-purple-500"
+          className="w-full p-3 border border-muted rounded focus:ring-2 focus:outline-none"
         />
 
         <textarea
@@ -50,12 +49,12 @@ const EventsBoard = () => {
           onChange={(e) => setDetails(e.target.value)}
           rows={5}
           required
-          className="w-full p-3 border border-sky-300 rounded focus:ring-2 focus:ring-sky-500"
+          className="w-full p-3 border border-muted rounded focus:ring-2 focus:outline-none"
         />
 
         <button
           type="submit"
-          className="w-full py-2 bg-yellow-300 hover:bg-yellow-400 text-black font-bold rounded font-nunito transition"
+          className="w-full py-2 bg-primary-soft hover:bg-primary text-primary font-bold rounded font-nunito transition"
         >
           Post Event
         </button>

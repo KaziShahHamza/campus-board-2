@@ -1,10 +1,51 @@
 @import "tailwindcss";
 
-@theme {
+:root {
+  /* Fonts */
   --font-poppins: Poppins, sans-serif;
   --font-nunito: Nunito, sans-serif;
 
-  --color-purple: #7e57c2;
-  --color-sky: #00bcd4;
-  --color-yellow: #ffeb3b;
+  /* Whitish theme palette */
+  --bg: #FBFBFD;           /* page background (very light) */
+  --surface: #FFFFFF;      /* card / surface */
+  --muted: #F5F7FA;        /* subtle surfaces */
+  --border: #E6E9EE;       /* light borders */
+  --text: #0F172A;         /* primary text (dark) */
+  --muted-text: #6B7280;   /* secondary text */
+  --primary: #3273ff;      /* primary accent (blue-600) */
+  --primary-soft: #DBEAFE; /* soft primary (light blue) */
+  --accent: #C7D2FE;       /* soft lavender accent */
 }
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-poppins);
+}
+
+/* Font helpers (used across JSX) */
+.font-poppins { font-family: var(--font-poppins); }
+.font-nunito { font-family: var(--font-nunito); }
+
+/* Simple utility classes to centralize the whitish theme */
+.bg-app { background-color: var(--bg); }
+.surface { background-color: var(--surface); border: 1px solid var(--border); }
+.muted-surface { background-color: var(--muted); border: 1px solid var(--border); }
+.text-primary { color: var(--text); }
+.text-muted { color: var(--muted-text); }
+.text-accent { color: var(--primary); }
+.bg-primary { background-color: var(--primary); color: #fff; }
+.bg-primary-soft { background-color: var(--primary-soft); }
+.bg-accent { background-color: var(--accent); }
+.border-muted { border-color: var(--border); }
+.btn-ghost { background: var(--surface); border: 1px solid var(--border); color: var(--text); }
+.rounded-surface { border-radius: 0.75rem; }
+
+/* small helpers for consistent cards */
+.card { box-shadow: 0 8px 20px rgba(12, 16, 23, 0.06); border-radius: 1rem; }
+

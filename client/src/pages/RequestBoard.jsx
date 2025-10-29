@@ -15,17 +15,16 @@ const RequestBoard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white px-4 py-8 flex flex-col items-center">
-      <h1 className="text-4xl font-bold text-[#7e57c2] mb-4 font-poppins">
+    <div className="min-h-screen bg-app px-4 py-8 flex flex-col items-center">
+      <h1 className="text-4xl font-bold text-primary mb-4 font-poppins">
         Request Board
       </h1>
-      <p className="text-[#00bcd4] text-center max-w-md mb-6 font-nunito">
+      <p className="text-accent text-center max-w-md mb-6 font-nunito">
         Submit your requests for notes, resources, or any campus help.
       </p>
-
       <form
         onSubmit={handleSubmit}
-        className="bg-purple-50 border border-[#7e57c2] p-6 rounded-xl shadow-lg w-full max-w-md space-y-4"
+        className="surface border-muted p-6 rounded-xl card w-full max-w-md space-y-4"
       >
         <input
           type="text"
@@ -33,14 +32,14 @@ const RequestBoard = () => {
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
           required
-          className="w-full p-3 border border-purple-300 rounded focus:ring-2 focus:ring-purple-500"
+          className="w-full p-3 border border-muted rounded focus:ring-2 focus:outline-none"
         />
 
         <select
           value={requestType}
           onChange={(e) => setRequestType(e.target.value)}
           required
-          className="w-full p-3 border border-purple-300 rounded focus:ring-2 focus:ring-purple-500"
+          className="w-full p-3 border border-muted rounded focus:ring-2 focus:outline-none"
         >
           <option value="">Select Type</option>
           <option>Study Material</option>
@@ -55,12 +54,12 @@ const RequestBoard = () => {
           onChange={(e) => setMessage(e.target.value)}
           rows={5}
           required
-          className="w-full p-3 border border-sky-300 rounded focus:ring-2 focus:ring-sky-500"
+          className="w-full p-3 border border-muted rounded focus:ring-2 focus:outline-none"
         />
 
         <button
           type="submit"
-          className="w-full py-2 bg-yellow-300 hover:bg-yellow-400 text-black font-bold rounded font-nunito transition"
+          className="w-full py-2 bg-primary-soft hover:bg-primary text-primary font-bold rounded font-nunito transition"
         >
           Submit Request
         </button>

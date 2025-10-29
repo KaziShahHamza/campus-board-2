@@ -12,30 +12,30 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#7e57c2] text-white px-6 py-4 flex justify-between items-center font-poppins">
-      <Link to="/" className="hover:text-[#ffeb3b] text-3xl">
+    <nav className="bg-primary text-white px-6 py-4 flex justify-between items-center font-poppins">
+      <Link to="/" className="hover:text-accent text-3xl">
         CampusBoard
       </Link>
       <div className="space-x-4">
-        <Link to="/" className="hover:text-[#ffeb3b] text-xl">
+        <Link to="/" className="hover:text-accent text-xl">
           Home
         </Link>
-        <Link to="/complain-board" className="hover:text-[#ffeb3b] text-xl">
+        <Link to="/complain-board" className="hover:text-accent text-xl">
           Complain Board
         </Link>
-        <Link to="/request-board" className="hover:text-[#ffeb3b] text-xl">
+        <Link to="/request-board" className="hover:text-accent text-xl">
           Request Board
         </Link>
-        <Link to="/events-board" className="hover:text-[#ffeb3b] text-xl">
+        <Link to="/events-board" className="hover:text-accent text-xl">
           Events Board
         </Link>
-        <Link to="/chats" className="hover:text-[#ffeb3b] text-xl">
+        <Link to="/chats" className="hover:text-accent text-xl">
           Chats
         </Link>
         {isLoggedIn && (
           <Link
             to="/dashboard"
-            className="bg-white text-[#7e57c2] px-3 py-2 rounded hover:bg-[#00bcd4] hover:text-white transition"
+            className="bg-white text-accent px-3 py-2 rounded hover:bg-primary-soft hover:text-white transition"
           >
             Dashboard
           </Link>
@@ -43,21 +43,21 @@ const Navbar = () => {
         {isLoggedIn ? (
           <button
             onClick={handleLogout}
-            className="bg-[#ffeb3b] text-black px-3 py-1 rounded hover:bg-white transition cursor-pointer"
+            className="bg-primary-soft text-primary px-3 py-1 rounded hover:bg-white transition cursor-pointer"
           >
             Logout
           </button>
         ) : (
           <Link
             to="/login"
-            className="bg-white text-[#7e57c2] px-3 py-2 rounded hover:bg-[#00bcd4] hover:text-white transition"
+            className="bg-white text-accent px-3 py-2 rounded hover:bg-primary-soft hover:text-white transition"
           >
             Login/SignUp
           </Link>
         )}
         <Link
           to="/post"
-          className="bg-white text-[#7e57c2] px-3 py-2 rounded hover:bg-[#00bcd4] hover:text-white transition"
+          className="bg-white text-accent px-3 py-2 rounded hover:bg-primary-soft hover:text-white transition"
         >
           Let's solve it, Post here
         </Link>

@@ -37,18 +37,17 @@ const PostProblem = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white px-4 py-8 flex flex-col items-center">
-      <h1 className="text-4xl font-bold text-[#7e57c2] mb-4 font-poppins">
+    <div className="min-h-screen bg-app px-4 py-8 flex flex-col items-center">
+      <h1 className="text-4xl font-bold text-primary mb-4 font-poppins">
         Share a Problem
       </h1>
-      <p className="text-[#00bcd4] text-center max-w-md mb-6 font-nunito">
+      <p className="text-accent text-center max-w-md mb-6 font-nunito">
         Have an issue on campus? Post it here to let others know and join the
         conversation!
       </p>
-
       <form
         onSubmit={handleSubmit}
-        className="bg-purple-50 border border-[#7e57c2] p-6 rounded-xl shadow-lg w-full max-w-md space-y-4"
+        className="surface border-muted p-6 rounded-xl card w-full max-w-md space-y-4"
       >
         {error && <p className="text-red-500 text-sm">{error}</p>}
 
@@ -58,7 +57,7 @@ const PostProblem = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
-          className="w-full p-3 border border-purple-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-500 font-poppins"
+          className="w-full p-3 border border-muted rounded focus:outline-none focus:ring-2 font-poppins"
         />
 
         <textarea
@@ -67,12 +66,12 @@ const PostProblem = () => {
           onChange={(e) => setDescription(e.target.value)}
           required
           rows={5}
-          className="w-full p-3 border border-sky-300 rounded focus:outline-none focus:ring-2 focus:ring-sky-500 font-poppins"
+          className="w-full p-3 border border-muted rounded focus:outline-none focus:ring-2 font-poppins"
         />
 
         <button
           type="submit"
-          className="w-full py-2 bg-yellow-300 hover:bg-yellow-400 text-black font-bold rounded font-nunito transition"
+          className="w-full py-2 bg-primary-soft hover:bg-primary text-primary font-bold rounded font-nunito transition"
         >
           Submit
         </button>

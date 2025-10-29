@@ -55,8 +55,8 @@ function Home() {
   };
 
   return (
-    <div className="p-6 font-poppins bg-[#f9f9ff] min-h-screen">
-      <h1 className="text-3xl font-bold text-[#00bcd4] mb-6">
+    <div className="p-6 font-poppins bg-app min-h-screen">
+      <h1 className="text-3xl font-bold text-accent mb-6">
         Campus Problem Board
       </h1>
       <PostList
