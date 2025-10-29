@@ -35,8 +35,14 @@ function PostList({ posts, onAddComment, onVote, onToggleSolved }) {
               <button
                 onClick={() => user && onVote(post._id, "up")}
                 disabled={!user}
-                className={!user ? "opacity-50 cursor-not-allowed" : ""}
                 title={!user ? "Login to vote" : ""}
+                className={`px-2 py-1 rounded ${
+                  !user
+                    ? "opacity-50 cursor-not-allowed"
+                    : post.userVote === "up"
+                    ? "bg-primary text-white"
+                    : "hover:bg-primary-soft"
+                }`}
               >
                 👍
               </button>
@@ -45,8 +51,14 @@ function PostList({ posts, onAddComment, onVote, onToggleSolved }) {
               <button
                 onClick={() => user && onVote(post._id, "down")}
                 disabled={!user}
-                className={!user ? "opacity-50 cursor-not-allowed" : ""}
                 title={!user ? "Login to vote" : ""}
+                className={`px-2 py-1 rounded ${
+                  !user
+                    ? "opacity-50 cursor-not-allowed"
+                    : post.userVote === "down"
+                    ? "bg-accent text-white"
+                    : "hover:bg-primary-soft"
+                }`}
               >
                 👎
               </button>
