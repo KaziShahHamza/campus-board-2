@@ -1,4 +1,6 @@
 // src/components/CommentList.js
+import { formatDistanceToNow } from "date-fns";
+
 
 function CommentList({ comments }) {
   return (
@@ -15,7 +17,8 @@ function CommentList({ comments }) {
             className="mb-2 p-2 bg-white border-l-4 border-sky-400 rounded font-nunito text-sm"
           >
             <p>{c.content}</p>
-            <small className="text-gray-500">{c.createdAt}</small>
+            <small className="text-gray-500">  {formatDistanceToNow(new Date(c.createdAt), { addSuffix: true })}
+</small>
           </div>
         ))
       )}

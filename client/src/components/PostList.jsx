@@ -2,6 +2,7 @@ import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
 import useAuth from "../context/useAuth";
 import { Link } from "react-router";
+import { formatDistanceToNow } from "date-fns";
 
 function PostList({ posts, onAddComment, onVote, onToggleSolved }) {
   const { user } = useAuth();
@@ -28,52 +29,55 @@ function PostList({ posts, onAddComment, onVote, onToggleSolved }) {
             </h3>
             <p className="text-gray-700">{post.description}</p>
             <small className="text-gray-500 block mt-1">
-              Posted at: {post.createdAt}
+               Posted {formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })}
             </small>
 
             <div className="flex items-center mt-2 space-x-2">
-              <button
-                onClick={() => user && onVote(post._id, "up")}
-                disabled={!user}
-                title={!user ? "Login to vote" : ""}
-                className={`px-2 py-1 rounded ${
-                  !user
-                    ? "opacity-50 cursor-not-allowed"
-                    : post.userVote === "up"
-                    ? "bg-primary text-white"
-                    : "hover:bg-primary-soft"
-                }`}
-              >
-                👍
-              </button>
+              <div className="tooltip">
+                <button
+                  onClick={() => user && onVote(post._id, "up")}
+                  disabled={!user}
+                  className={`px-2 py-1 rounded ${
+                    !user
+                      ? "opacity-50 cursor-not-allowed"
+                      : post.userVote === "up"
+                      ? "bg-primary text-white"
+                      : "hover:bg-primary-soft"
+                  }`}
+                >
+                  👍
+                </button>
+                {!user && <span className="tooltiptext">Login to vote</span>}
+              </div>
               <span>{post.upvotes || 0}</span>
 
-              <button
-                onClick={() => user && onVote(post._id, "down")}
-                disabled={!user}
-                title={!user ? "Login to vote" : ""}
-                className={`px-2 py-1 rounded ${
-                  !user
-                    ? "opacity-50 cursor-not-allowed"
-                    : post.userVote === "down"
-                    ? "bg-accent text-white"
-                    : "hover:bg-primary-soft"
-                }`}
-              >
-                👎
-              </button>
+              <div className="tooltip">
+                <button
+                  onClick={() => user && onVote(post._id, "down")}
+                  disabled={!user}
+                  className={`px-2 py-1 rounded ${
+                    !user
+                      ? "opacity-50 cursor-not-allowed"
+                      : post.userVote === "down"
+                      ? "bg-accent text-white"
+                      : "hover:bg-primary-soft"
+                  }`}
+                >
+                  👎
+                </button>
+                {!user && <span className="tooltiptext">Login to vote</span>}
+              </div>
               <span>{post.downvotes || 0}</span>
 
-              <button
-                onClick={() => user && onToggleSolved(post._id)}
-                disabled={!user}
-                className={`ml-auto text-sm text-sky-500 hover:underline ${
-                  !user ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-                title={!user ? "Login to toggle" : ""}
-              >
-                {post.isSolved ? "Mark Unsolved" : "Mark Solved"}
-              </button>
+              {user && (
+                <button
+                  onClick={() => onToggleSolved(post._id)}
+                  className="ml-auto text-sm text-sky-500 hover:underline"
+                  title="Toggle solved status"
+                >
+                  {post.isSolved ? "Mark Unsolved" : "Mark Solved"}
+                </button>
+              )}
             </div>
 
             <CommentList comments={post.comments || []} />
