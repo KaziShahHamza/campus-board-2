@@ -103,7 +103,7 @@ function Dashboard() {
           localStorage.removeItem("token");
           navigate("/login");
         }}
-        className="mt-8 text-red-500 hover:text-red-600 font-semibold transition"
+        className="m-3 p-2 bg-primary-soft hover:bg-primary text-primary font-bold rounded font-nunito transition"
       >
         Logout
       </button>

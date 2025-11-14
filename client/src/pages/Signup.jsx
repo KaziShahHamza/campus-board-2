@@ -60,14 +60,14 @@ function Signup() {
         />
         <button
           type="submit"
-          className="w-full bg-sky text-white py-2 rounded-md font-semibold hover:bg-purple transition"
+          className="w-full py-2 bg-primary-soft hover:bg-primary text-primary font-bold rounded font-nunito transition"
         >
           Register
         </button>
       </form>
       <p className="mt-4 text-center text-sm text-gray-600">
         Go back to{" "}
-        <a href="/login" className="text-purple hover:underline font-medium">
+        <a href="/login" className="text-blue-500 hover:underline font-medium">
           login.
         </a>
       </p>

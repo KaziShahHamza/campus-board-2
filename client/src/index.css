@@ -11,10 +11,10 @@
   --muted: #F5F7FA;        /* subtle surfaces */
   --border: #E6E9EE;       /* light borders */
   --text: #0F172A;         /* primary text (dark) */
-  --muted-text: #6B7280;   /* secondary text */
-  --primary: #3273ff;      /* primary accent (blue-600) */
-  --primary-soft: #DBEAFE; /* soft primary (light blue) */
-  --accent: #C7D2FE;       /* soft lavender accent */
+  --muted-text: #9BB4C0;   /* secondary text */
+  --primary: #703B3B;      /* primary accent (blue-600) */
+  --primary-soft: #A18D6D; /* soft primary (light blue) */
+  --accent: #E1D0B3;       /* soft lavender accent */
 }
 
 html, body, #root {
